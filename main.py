@@ -27,7 +27,7 @@ snake_direction()
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(.08)
 
     snake.move()
 
@@ -43,10 +43,8 @@ while game_is_on:
         scoreboard.game_over()
 
     #Detects collision with any segment in snake body
-    for segment in snake.snake_segments:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+    for segment in snake.snake_segments[1:]:
+        if snake.head.distance(segment) < 10:
             game_is_on = False
             scoreboard.game_over()
 
